@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #3C5BFF;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            color:#000;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-width: 600px; /* Adjust the max-width as needed */
+            width: 100%;
+            margin: 0 auto; /* Center the container horizontally */
+        }
+
+        .interested-students {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 2px 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            margin-bottom: 80px;
+            font-size: 0.9em;
+            text-align: center;
+            min-width: 400px;
+            width: 650px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+        }
+
+        .content-table thead tr {
+            background-color: #3C5BFF;
+            border-bottom: 2px solid #000;
+            color: #ffffff;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .content-table th,
+        .content-table td {
+            padding: 12px 15px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
+        }
+
+        .content-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+            font-weight: bold;
+            color: #3C5BFF;
+        }
+
+        .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #3C5BFF;
+        }
+
+
+        .footer {
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            font-weight: bold;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            margin: 0;
+        }
+
+
+        .logo img {
+            width: 50px; /* Adjust the logo width as needed */
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            margin: 0 20px;
+            color: #333;
+            font-weight: bold;
+        }
+    
+    </style>
+    <title>Interested Students</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="http://ism.dmst.aueb.gr/ismgroup3/images/Logo.png" alt="Logo">
+        </div>
+        <nav class="nav-menu">
+            <a href="Index.html">Index</a>
+            <a href="signup.html">Login/Sign Up</a>
+        </nav>
+    </header>
+    <div class="container">
+    <div class="interested-students">
+        <h2>Interested Students</h2>
+    </div>
+
+    <table class="content-table">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>E-Mail</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Vasilis</td>
+            <td>Kekesis</td>
+            <td>bkeke2001@gmail.com</td>
+            <td>English</td>
+          </tr>
+          <tr class="active-row">
+            <td>2</td>
+            <td>Giannis</td>
+            <td>Theodoropoulos</td>
+            <td>giannistheod@gmail.com</td>
+            <td>English</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Nikos</td>
+            <td>Zoulias</td>
+            <td>nickzoulias@gmail.com</td>
+            <td>English</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer class="footer">
+        <p class="footer-text">© 2023 eLanguage All Rights Reserved</p>
+    </footer>
+    
+</body>
+
+</html>
+
+
+
+

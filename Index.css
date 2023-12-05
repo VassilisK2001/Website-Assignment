@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #3C5BFF;
+}
+
+.content {
+    display: flex;
+    padding: 20px;
+    align-items: stretch;
+}
+
+.left-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.right-content {
+    flex: 1;
+    padding: 50px;
+}
+
+.right-content img {
+    height: 700px; /* Set the height to 100% to match the vertical line's height */
+    object-fit: cover; /* Maintain aspect ratio while covering the container */
+}
+
+h3 {
+    margin-top: 40px; /* Increase vertical space between <h3> elements */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow effect to the text */
+}
+
+h1, h2, p {
+    margin-top: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow effect to the text */
+}

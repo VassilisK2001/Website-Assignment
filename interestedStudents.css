@@ -1,0 +1,91 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #3C5BFF;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 600px; /* Adjust the max-width as needed */
+    width: 100%;
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.message {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    max-width: 700px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 span{
+    display: block;
+    margin-bottom: 20px;
+}
+
+.new-listing-button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-size: 17px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+}
+
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    margin-bottom: 80px;
+    font-size: 0.9em;
+    text-align: center;
+    min-width: 400px;
+    width: 650px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: #3C5BFF;
+    border-bottom: 2px solid #000;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5)
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+    font-weight: bold;
+    color: #3C5BFF;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #3C5BFF;
+}

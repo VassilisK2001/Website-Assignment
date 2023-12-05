@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #3C5BFF;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.language-listings {
+    padding: 20px;
+    text-align: center;
+}
+
+.language-info {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 2px 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 750px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.teacher-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.teacher-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.teacher-details h3 {
+    margin: 0;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.teacher-details h3 span {
+    color: #777; /* Set the color for the age text */
+    font-size: 14px; /* Set the font size for the age text */
+    margin-left: 10px; /* Add some space between the name and age */
+}
+
+.teacher-details p {
+    margin: 8px 0; /* Add margin for spacing between paragraphs */
+    margin-bottom: 5px;
+    font-size: 16px; /* Set the font size */
+    font-family: "Arial", sans-serif;
+    color: #000; /* Set the text color */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.delete-listing-button {
+    background-color: #3C5BFF;
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 390px; 
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Box shadow effect */
+}
+
+.new-listing-button {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-bottom: 50px;
+    cursor: pointer;
+    font-size: 17px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);   
+}
+
+.language-info,
+.new-listing-button{
+    display:block;
+}

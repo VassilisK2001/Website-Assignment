@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+           margin: 0;
+           padding: 0;
+           font-family: Arial, sans-serif;
+           background-color: #3C5BFF;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            color:#000;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .inner-container {
+            width: 967px;
+            height: 900px;
+            margin-bottom: 80px;
+            flex-shrink: 0;
+            border-radius: 40px 40px 40px 40px;
+            background: #FFF;
+            margin-left: 500px;
+        }
+
+        h1 {
+            width: 301px;
+            height: 39px;
+            flex-shrink: 0;
+            color: #4D4242;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            margin-bottom: 60px;
+            margin-left: 30px;
+        }
+
+        .form-group {
+            width: 48%;
+            margin-bottom: 100px;
+        }
+
+        label {
+          color: #795A5A;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-size: 17px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          letter-spacing: 1px;
+          margin-left: 30px;
+        }
+
+
+        input[type="text"],
+        input[type="password"] {
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+          font-size: 17px;
+          color:#795A5A; 
+          border: 2px solid;
+          padding-left: 20px;
+          padding: 12px;
+
+        }
+
+        input[type='text']::placeholder,
+        input[type='password']::placeholder {
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+          font-size: 17px;
+          color:#795A5A;
+    
+        }
+
+        .cred-input{
+          display: flex;
+          width: 824px;
+          padding: 0px 299px 18px 62px;
+          margin-left: 30px;
+          align-items: center;
+          border-radius: 8px;
+          border: 1px solid #795A5A;
+          background: #FFF;
+          
+        }
+
+        .create-account-btn {
+          display: inline-flex;
+          width: 424px;
+          padding: 16px 40px;
+          font-size: 17px;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-style: normal;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          margin-bottom: 40px;
+          margin-left: 30px;
+          background-color: #3C5BFF;
+        }
+
+        .create-account-btn:hover {
+          background-color: #3C5BFF;
+        }
+
+        .additional-button {
+          display: inline-flex;
+          width: 424px;
+          padding: 16px 40px;
+          font-size: 17px;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          font-style: normal;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          border-radius: 8px;
+          margin-bottom: 40px;
+          background-color: #3C5BFF; 
+        }
+
+        .additional-button:hover {
+          background-color: #3C5BFF; /* Set hover background color for the additional button */
+        }
+
+        .create-account-btn:hover {
+          background-color: #3C5BFF;
+        }
+
+        .footer {
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .logo img {
+            width: 50px; /* Adjust the logo width as needed */
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            margin: 0 20px;
+            color: #333;
+            font-weight: bold;
+        }
+
+    </style>
+    <title>SignIn Page</title>
+</head>
+
+<body>
+
+        <header class="header">
+            <div class="logo">
+                <img src="http://ism.dmst.aueb.gr/ismgroup3/images/Logo.png" alt="Logo">
+            </div>
+            <nav class="nav-menu">
+                <a href="Index.html">Index</a>
+                <a href="signup.html">Login/Sign Up</a>
+            </nav>
+        </header>
+    
+        <div class="inner-container">
+            <h1>Sign In</h1>
+            <form>
+              <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="email" placeholder="Enter your username" name="email" class="cred-input" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" name="password" class="cred-input" required>
+            </div>
+            <button type="submit" class="create-account-btn">Sign in as student</button>
+            <button type="submit" class="additional-button">Sign in as teacher</button>
+            </form>
+        </div>
+
+        <footer class="footer">
+            <p class="footer-text">© 2023 eLanguage All Rights Reserved</p>
+        </footer>
+
+
+    
+</body>
+
+</html>
+
+
+
+
