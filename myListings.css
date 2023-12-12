@@ -76,6 +76,22 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.textarea-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.content {
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-family: "Arial", sans-serif;
+    color: #000;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-indent: 10px; /* Add space from the left for each line */
+    vertical-align: top; /* Align text to the top */
+}
+
 .delete-listing-button {
     background-color: #3C5BFF;
     color: #000;

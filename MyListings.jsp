@@ -70,7 +70,20 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
 
         <div class="teacher-listings" id="listingsContainer">
             
-            <% for(Listing listing:listings) { %>
+            <% for(Listing listing:listings) { 
+
+                String education = listing.getEducation();
+                education = education.replace("\n", "<br>");
+                listing.setEducation(education);
+
+                if(!listing.getCertifications().equals("")){
+
+                    String certifications = listing.getCertifications();
+                    certifications = certifications.replace("\n", "<br>");
+                    listing.setCertifications(certifications);
+                }
+            
+            %>
             <div class="teacher-card" id="listing_<%=listing.getId()%>">
                 <img src="<%=request.getContextPath()%>/images/<%=listing.getFileName()%>">
                 <div class="teacher-details">
@@ -80,12 +93,22 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
                     <p>Language: <%=listing.getLanguage()%></p>
                     <p>Experence: <%=listing.getExperience()%> years</p>
                     <p>CEFR Level: <%=listing.getTeachComp()%></p>
-                    <p>Education: <%=listing.getEducation()%></p>
+                    <div class="textarea-container">
+                        <p>Education: </p>
+                        <div class="content">
+                            <%=listing.getEducation() %>
+                        </div>
+                    </div>
+                    
 
                     <% if(!listing.getCertifications().equals("")){ %>
 
-                        <p>Certifications: <%=listing.getCertifications()%></p>
-    
+                        <div class="textarea-container">
+                            <p>Certifications: </p>
+                            <div class="content">
+                                <%=listing.getCertifications() %>
+                            </div>
+                        </div>
                     <% } %> 
 
                     <p>Price per Hour: <%=listing.getPrice()%> euros</p>
