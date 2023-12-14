@@ -92,17 +92,8 @@ body {
 
  }
 
- .checkbox-group {
+ .radio-group {
   margin-top: 10px; /* Adjust the value to increase or decrease the vertical distance */
-}
-
-.checkbox-group input[type="checkbox"] {
-    border: 10px solid #d5d5d5;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-    width: 20px;
-    height: 20px;  
 }
 
  .login-btn {

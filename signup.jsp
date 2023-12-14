@@ -96,13 +96,13 @@ List<String> regions = dbdao.getRegions();
                 </div>
                 <div class="form-group">
                     <label for="role">Role:</label>
-                    <div class="checkbox-group">
+                    <div class="radio-group">
                         <label>
-                            <input type="checkbox" id="student" name="role" value="student">
+                            <input type="radio" id="student" name="role" value="student">
                             Student
                         </label>
                         <label>
-                            <input type="checkbox" id="teacher" name="role" value="teacher">
+                            <input type="radio" id="teacher" name="role" value="teacher">
                             Teacher
                         </label> 
                     </div>

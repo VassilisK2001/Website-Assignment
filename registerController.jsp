@@ -18,7 +18,7 @@ String email = request.getParameter("email");
 String username = new String(request.getParameter("username").getBytes("ISO-8859-1"),"UTF-8");
 String password = new String(request.getParameter("password").getBytes("ISO-8859-1"),"UTF-8");
 String confirm = new String(request.getParameter("confirm").getBytes("ISO-8859-1"),"UTF-8");
-String role[] = request.getParameterValues("role");
+String role = request.getParameter("role");
 
 List<Integer> index = new ArrayList<Integer>();
 int age = 0;
@@ -76,7 +76,7 @@ if(!ma.matches()){
         age_error_msg = "is not valid";
         index.add(3);
     }
-    if(role.length == 1 && role[0].equals("teacher")){
+    if(role != null && !role.isEmpty() && role.equals("teacher")){
         if(age > 0 && age < 18){
             countErrors++;
             age_error_msg = "for teachers has to be at least 18 years old"; 
@@ -110,7 +110,7 @@ if(!password.equals(confirm)){
     countErrors++;
     index.add(7);
 }
-if((role == null || role.length == 0) || (role.length > 1)){
+if(role == null || role.isEmpty()){
     countErrors++;
     index.add(8);
 }
@@ -155,7 +155,7 @@ if(countErrors != 0){
 </button>
 
 <% } else { 
-    if(role[0].equals("student")){
+    if(role.equals("student")){
 
         StudentService stserv = new StudentService();
 
@@ -203,7 +203,7 @@ if(countErrors != 0){
                 <li><b>Region:</b> <%=region%></li>
                 <li><b>Email:</b> <%=email%></li>
                 <li><b>Username:</b> <%=username%></li>
-                <li><b>Role:</b> <%=role[0]%></li>
+                <li><b>Role:</b> <%=role%></li>
             </ul>
         </div>
     </div>

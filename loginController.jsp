@@ -9,11 +9,11 @@ if(!request.getMethod().equals("POST")){
 
 String username = new String(request.getParameter("username").getBytes("ISO-8859-1"),"UTF-8");
 String password = new String(request.getParameter("password").getBytes("ISO-8859-1"),"UTF-8");
-String role[] = request.getParameterValues("role");
+String role = request.getParameter("role");
 %>
 
 <%
-if ((role == null || role.length == 0) || (role.length > 1)) {
+if (role == null || role.isEmpty()) {
 
     request.setAttribute("message", "Role must be either student or teacher");
 %>
@@ -21,7 +21,7 @@ if ((role == null || role.length == 0) || (role.length > 1)) {
 <jsp:forward page="login.jsp"/>
 
 <%} else {
-    if(role[0].equals("student")) {
+    if(role.equals("student")) {
         try{
 
             StudentService studentService = new StudentService();
