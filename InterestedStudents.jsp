@@ -91,6 +91,7 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
             <th>E-Mail</th>
             <th>Region</th>
             <th>Language</th>
+            <th>Showed interest at:</th>
           </tr>
         </thead>
         <tbody>
@@ -100,12 +101,13 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
           for(Interest interest: interested_students) { 
         %>
           <tr>
-            <td><%=counter++%></td>
+            <td><%=++counter%></td>
             <td><%=interest.getStudent().getFirstname()%></td>
             <td><%=interest.getStudent().getLastname()%></td>
             <td><%=interest.getStudent().getEmail()%></td>
             <td><%=interest.getStudent().getRegion()%></td>
             <td><%=interest.getListing().getLanguage()%></td>
+            <td><%=interest.getInterestDate()%></td>
           </tr>
         <% 
           }

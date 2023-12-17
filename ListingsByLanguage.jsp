@@ -124,13 +124,29 @@ ListingService listserv = new ListingService();
         popup.classList.remove("open-popup");
     }
 
+    function formatDate(date) {
+        // Format the date to DD/MM/YYYY
+        var day = date.getDate();
+        var month = date.getMonth() + 1; // Months are zero-based
+        var year = date.getFullYear();
+
+        // Add leading zeros if needed
+        day = (day < 10) ? "0" + day : day;
+        month = (month < 10) ? "0" + month : month;
+
+        return day + "/" + month + "/" + year;
+    }
+
+
     function sendData(listingId,studentId) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "TrackInterest.jsp", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         // Prepare data to be sent
-        var data = "student_id=" + encodeURIComponent(studentId) + "&listing_id=" + encodeURIComponent(listingId);
+        var currentDate = new Date();
+        var formattedDate = formatDate(currentDate);
+        var data = "student_id=" + encodeURIComponent(studentId) + "&listing_id=" + encodeURIComponent(listingId) + "&interest_date=" + encodeURIComponent(formattedDate);
 
         // Send the request
         xhr.send(data);

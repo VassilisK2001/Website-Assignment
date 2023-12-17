@@ -10,6 +10,7 @@ if(!request.getMethod().equals("POST")){
 
 String studentId = request.getParameter("student_id");
 String listingId = request.getParameter("listing_id");
+String interest_date = request.getParameter("interest_date");
 
         if(studentId != null && listingId != null){
 
@@ -19,7 +20,7 @@ String listingId = request.getParameter("listing_id");
             InterestService trackService = new InterestService();
 
             try{               
-                trackService.addStudentInterest(listing_id, student_id);
+                trackService.addStudentInterest(listing_id, student_id, interest_date);
 
             }catch(Exception e){
                 throw new Exception(e.getMessage());
