@@ -160,7 +160,7 @@ if(countErrors != 0){
         StudentService stserv = new StudentService();
 
         try{
-            stserv.checkStudentExists(name, surname, age, region, email, username, password);
+            stserv.checkStudentExists(username, password);
         }catch(Exception e) {
             request.setAttribute("message",e.getMessage());
         %>
@@ -176,7 +176,7 @@ if(countErrors != 0){
         TeacherService teachserv = new TeacherService();
 
         try{
-            teachserv.checkTeacherExists(name, surname, age, region, email, username, password);
+            teachserv.checkTeacherExists(username, password);
         }catch(Exception e) {
             request.setAttribute("message",e.getMessage());
         %>
