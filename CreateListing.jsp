@@ -16,6 +16,9 @@ DBDAO dbdao = new DBDAO();
 List<String> languages = dbdao.getLanguages();
 List<String> regions = dbdao.getRegions();
 List<String> cefrlevels = dbdao.getCEFRlevels();
+
+ListingService listserv = new ListingService();
+List<Listing> listings = listserv.getTeacherListings(teacher);
 %>
 
 <!DOCTYPE html>
@@ -40,8 +43,13 @@ List<String> cefrlevels = dbdao.getCEFRlevels();
                 <span class="signed-in-info">Signed in as <%=teacher.getUsername()%></span>
                 <a href="Index.jsp">About</a>
                 <a href="CreateListing.jsp" class="active">Create Listing</a>
+
+                <% if(!listings.isEmpty()) { %>
+
                 <a href="MyListings.jsp">My Listings</a>
                 <a href="InterestedStudents.jsp">Interested Students</a>
+
+                <% }  %>
                 <a href="logout.jsp"><span><i class="fas fa-arrow-right-from-bracket"></i></span>Log Out</a>
             </nav>
         </header>
