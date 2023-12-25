@@ -71,8 +71,8 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
             <section>
                 <h3>Personal Information</h3>
                   
-                    <label for="photo">Photo:</label>
-                    <input type="file" id="photo" name="photo" class="info"  accept="image/*" required><br>
+                    <label for="photo">Photo:</label><br>
+                    <input type="file" id="photo" name="photo" class="customfile" style="margin-left: 30px;"  accept="image/*" required><br>
 
                     <label for="firstName">First Name:</label>
                     <input type="text" id="firstName" placeholder="Enter your first name" name="firstName" class="info"  required><br>
