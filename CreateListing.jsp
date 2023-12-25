@@ -65,8 +65,7 @@ List<String> cefrlevels = dbdao.getCEFRlevels();
                   
                     <label for="photo">Photo:</label>
                     <input type="file" id="photo" name="photo" class="info"  accept="image/*" required><br>
-                  
-                  
+
                     <label for="firstName">First Name:</label>
                     <input type="text" id="firstName" placeholder="Enter your first name" name="firstName" class="info"  required><br>
     
@@ -127,7 +126,7 @@ List<String> cefrlevels = dbdao.getCEFRlevels();
                 <label for="certifications">Certifications:</label>
                 <textarea id="certifications" placeholder="Enter any additional certifications" name="certifications" class="info"></textarea><br>
     
-                <label for="pricePerHour">Price per Hour($):</label>
+                <label for="pricePerHour">Price per Hour(&euro;):</label>
                 <input type="text" id="pricePerHour" placeholder="Enter price per hour for your lessons" name="pricePerHour" class="info" required><br>
 
             </section>

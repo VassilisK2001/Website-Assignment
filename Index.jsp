@@ -71,9 +71,9 @@
             <p>E-language is the easiest way to find the best teachers for the language you desire!</p>
             <p>Our app connects students who are looking for private lessons to learn a foreign language with high-skilled teachers based in Athens.</p>
             <h3>If you are a student:</h3>
-            <p>Select the language you are interested in and find the teacher that best matches your demands from the listings created by a variety of teachers. You can show interest and communicate with the teacher by sending him an e-mail.</p>
+            <p>Select the language you are interested in and find the teacher that best matches your demands from the listings created by a variety of teachers. You can show interest and communicate with teachers by sending them an e-mail.</p>
             <h3>If you are a teacher:</h3>
-            <p>Create your listing and find students for private lessons. You will be notified when a student shows his interest for your services, so keep your eyes open!</p>
+            <p>Create your listing and find students for private lessons. You will be notified when a student shows interest for your services, so keep your eyes open!</p>
         </div>
 
         <div class="right-content">
