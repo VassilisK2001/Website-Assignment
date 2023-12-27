@@ -53,7 +53,10 @@
                 Student student = (Student) session.getAttribute("studentObj");   
             %>
                 <nav class="nav-menu">
-                    <span class="signed-in-info">Signed in as <%=student.getUsername()%></span>
+                    <span class="signed-in-info">
+                        <%=student.getUsername()%>
+                    </span>
+                    <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
                     <a href="Index.jsp" class="active">About</a>
                     <a href="Select_language.jsp">Select Language</a>
                     <a href="logout.jsp"><span><i class="fas fa-arrow-right-from-bracket"></i></span>Log Out</a>

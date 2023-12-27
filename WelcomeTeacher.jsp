@@ -32,7 +32,10 @@ Teacher teacher = (Teacher) session.getAttribute("teacherObj");
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
         <nav class="nav-menu">
-          <span class="signed-in-info">Signed in as <%=teacher.getUsername()%></span>
+          <span class="signed-in-info">
+            <%=teacher.getUsername()%>
+          </span>
+          <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
           <a href="Index.jsp">About</a>
           <a href="logout.jsp"><span><i class="fas fa-arrow-right-from-bracket"></i></span>Log Out</a>
         </nav>

@@ -37,7 +37,10 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
         <nav class="nav-menu">
-            <span class="signed-in-info">Signed in as <%=teacher.getUsername()%></span>
+            <span class="signed-in-info">
+                <%=teacher.getUsername()%>
+            </span>
+            <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
             <a href="Index.jsp">About</a>
             <a href="CreateListing.jsp">Create Listing</a>
             <a href="MyListings.jsp" class="active">My Listings</a>

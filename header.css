@@ -2,7 +2,7 @@
 .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     padding: 10px 20px;
     background-color: #fff;
     color:#000;
@@ -11,6 +11,11 @@
 
 .logo img {
     width: 50px; /* Adjust the logo width as needed */
+}
+
+.user-img {
+    max-width: 30px;
+    height: 2em;
 }
 
 .nav-menu a {
