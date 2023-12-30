@@ -113,32 +113,11 @@ public class TeacherService {
 		}			
 	}
 
-	public void checkTeacherExists(String firstname, String lastname, int age, String region, String email, String username, String password) throws Exception {
+	public void checkTeacherExists(String username, String password) throws Exception {
 
 		Connection con = null;
 		String sql = 
-		"SELECT " +
-			"teachers.firstName, " +
-			"teachers.lastName, " +
-			"teachers.username, " +
-			"teachers.password, " +
-			"teachers.email, " +
-			"teachers.age, " +
-			"regions.region_name " +
-		"FROM " +
-			"teachers " +
-		"INNER JOIN " +
-			"regions " +
-		"ON " +
-			"teachers.region_id = regions.region_id " +
-		"WHERE " +
-			"teachers.firstName = ? AND " +
-			"teachers.lastName = ? AND " +
-			"teachers.username = ? AND " +
-			"teachers.password = ? AND " +
-			"teachers.email = ? AND " +
-			"teachers.age = ? AND " +
-			"regions.region_name = ?;";
+		"SELECT * FROM teachers WHERE username=? OR password=?;"; 
 		
 		DB db = new DB();
 		PreparedStatement stmt = null;
@@ -147,17 +126,12 @@ public class TeacherService {
 		try{
 			con = db.getConnection();
 			stmt = con.prepareStatement(sql);
-			stmt.setString(1,firstname);
-			stmt.setString(2,lastname);
-			stmt.setString(3,username);
-			stmt.setString(4,password);
-			stmt.setString(5,email);
-			stmt.setInt(6,age);
-			stmt.setString(7,region);
+			stmt.setString(1,username);
+			stmt.setString(2,password);
 			rs = stmt.executeQuery();
 
 			if(rs.next()){
-				throw new Exception("This teacher already exists");
+				throw new Exception("Teacher with this username or password already exists");
 			}
 
 			rs.close();
