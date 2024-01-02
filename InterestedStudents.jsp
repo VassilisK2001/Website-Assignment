@@ -67,23 +67,12 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
       <% } else { 
 
         InterestService interestserv = new InterestService();
-        List<Interest> interested_students = interestserv.getInterestedStudents(teacher.getId());
-        
-        if(interested_students.isEmpty()){
+        List<Interest> interested_students = interestserv.getInterestedStudents(teacher.getId()); 
       %>
 
       <div class="message">
-        <h2>
-          <span>No students have expressed interest in your listings yet.</span> 
-          <span>Please be patient and students will surely show interest soon!</span>
-        </h2>
+        <h2>Interested Students</h2>
       </div>
-
-      <% } else {  %>
-
-    <div class="message">
-      <h2>Interested Students</h2>
-    </div>
 
     <table class="content-table">
         <thead>
@@ -98,11 +87,19 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
           </tr>
         </thead>
         <tbody>
+        
+        <% if(interested_students.isEmpty()){ %>
+
+            <tr>
+              <td colspan="7"><strong>There are not currently any interested students.</strong></td>
+            </tr>
 
         <% 
+        } else {
           int counter = 0;
           for(Interest interest: interested_students) { 
         %>
+        
           <tr>
             <td><%=++counter%></td>
             <td><%=interest.getStudent().getFirstname()%></td>
