@@ -24,6 +24,7 @@ List<Integer> index = new ArrayList<Integer>();
 int age = 0;
 String age_error_msg = "";
 int countErrors = 0;
+boolean signup_success = false;
 %>
 
 <!DOCTYPE html>
@@ -36,6 +37,7 @@ int countErrors = 0;
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/controller.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="<%=request.getContextPath()%>/js/confetti.js"></script>
    
     <title>Register Controller</title>
 </head>
@@ -170,6 +172,7 @@ if(countErrors != 0){
         <%  
         }
         stserv.saveStudent(name, surname, age, region, email, username, password);
+        signup_success = true;
 
     } else {
 
@@ -186,6 +189,7 @@ if(countErrors != 0){
         <%
         }
         teachserv.saveTeacher(name, surname, age, region, email, username, password);
+        signup_success = true;
     } 
 %>
 
@@ -221,6 +225,30 @@ if(countErrors != 0){
 
 </div>   
    <%@ include file="footer.jsp"%>
+
+
+<% if (signup_success) {  %>
+
+<script>
+    // to start
+   const start = () => {
+    setTimeout(function(){
+        confetti.start();
+        },1000); //1000 = 1 second
+    };
+    // to stop
+   const stop = () => {
+    setInterval(function(){
+        confetti.stop();
+        },5000)
+    }
+
+    start();
+    stop();
+
+</script>
+
+<%  }  %>
     
 </body>
 

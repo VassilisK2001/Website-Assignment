@@ -37,6 +37,7 @@ double price = 0;
 int age = 0;
 int experience = 0;
 int countErrors = 0;
+boolean newlisting_success = false;
 
 // get teacher object from session
 Teacher teacher = (Teacher) session.getAttribute("teacherObj");
@@ -74,6 +75,7 @@ public static boolean match(String epattern, String parValue){
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/controller.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="<%=request.getContextPath()%>/js/confetti.js"></script>
     
     <title>New Listing Controller</title>
 </head>
@@ -254,15 +256,15 @@ if(countErrors != 0){
         <div class="details">
             <ol>
 <% if(index.contains(1)){ %>
-                <li><b>First Name</b> does not match your first name</li>
+                <li>Enter your <b>First Name</b> correctly</li>
 <%} if(index.contains(2)){ %>
-                <li><b>Last Name</b> does not match your last name</li>
+                <li>Enter your <b>Last Name</b> correctly</li>
 <%} if(index.contains(3)){ %>
                 <li><b>Age</b> <%=message_age%></li>
 <%} if(index.contains(4)){ %>
-                <li><b>Region</b> does not match your region</li>                
+                <li>Enter your <b>Region</b> correctly</li>                
 <%} if(index.contains(5)){ %>
-                <li><b>Email</b> does not match your email</li>
+                <li>Enter your <b>Email</b> correctly</li>
 <%} if(index.contains(6)){ %>
                 <li><b>Experience</b> is not valid</li>
 <%} if(index.contains(7)){ %>
@@ -283,6 +285,7 @@ if(countErrors != 0){
 
 <% } else {
     listserv.saveListing(teacher,photo,language,experience,teachcomp,education,certifications,price);
+    newlisting_success = true;
 %>
         
         <div class="message" style="background-color: #00BFFF;">
@@ -303,6 +306,31 @@ if(countErrors != 0){
     </div>
 
     <%@ include file="footer.jsp"%>
+
+    <% if (newlisting_success) {  %>
+
+        <script>
+
+            // to start
+           const start = () => {
+            setTimeout(function(){
+                confetti.start();
+                },1000); //1000 = 1 second
+            };
+
+            // to stop
+           const stop = () => {
+            setInterval(function(){
+                confetti.stop();
+                },5000)
+            }
+        
+            start();
+            stop();
+        
+        </script>
+        
+    <%  }  %>
     
 </body>
 
