@@ -245,8 +245,8 @@ if(isMultipart){
 if(countErrors != 0){
 %>
 
-<div class="message">
-    <h2>Create Listing form has errors!</h2>
+<div class="message" style="background-color: #FFB833;">
+    <h2>New Listing form has errors!</h2>
 </div>
 
 <div class="list">
@@ -285,7 +285,7 @@ if(countErrors != 0){
     listserv.saveListing(teacher,photo,language,experience,teachcomp,education,certifications,price);
 %>
         
-        <div class="message">
+        <div class="message" style="background-color: #00BFFF;">
             <h2>Your listing was successfully created!</h2>
         </div>
 

@@ -45,6 +45,12 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
                 </span>
                 <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
                 <a href="Index.jsp">About</a>
+
+                <% if(listings.isEmpty()) {  %>
+
+                <a href="WelcomeTeacher.jsp">Home</a>
+                <%  }  %>
+        
                 <a href="CreateListing.jsp" class="active">Create Listing</a>
 
                 <% if(!listings.isEmpty()) { %>

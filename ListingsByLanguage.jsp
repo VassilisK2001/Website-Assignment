@@ -57,8 +57,8 @@ ListingService listserv = new ListingService();
     if(listings.isEmpty()){
     %>
 
-        <div class="language-info">
-            <h2>There are not listings available for this language</h2>
+        <div class="language-info" style="background-color: #FFB833;">
+            <h2>There are no listings available for this language</h2>
         </div>
 
     <%

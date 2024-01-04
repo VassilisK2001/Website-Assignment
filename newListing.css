@@ -16,7 +16,7 @@ body {
  }
 
  .message {
-  background-color: #fff;
+  background-color: #FFB833;
   color: #000;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -28,6 +28,15 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
 
  .flex-container {

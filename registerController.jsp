@@ -120,7 +120,7 @@ if(role == null || role.isEmpty()){
 if(countErrors != 0){
 %>
 
-<div class="message">
+<div class="message" style="background-color: #FFB833;">
     <h2>Registration form has errors!</h2>
 </div>
 
@@ -189,7 +189,7 @@ if(countErrors != 0){
     } 
 %>
 
-<div class="message">
+<div class="message" style="background-color: #00BFFF;">
     <h2>You have successfully signed up!</h2>
 </div>
 

@@ -56,7 +56,7 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
 
       <% if(listings.isEmpty()) { %>
 
-        <div class="message">
+        <div class="message" style="background-color: #FFB833;">
           <h2>You have not created any listings</h2>
         </div>
 
