@@ -20,6 +20,10 @@ public class Interest {
         this.student = student;
     }
 
+    public void setListing(Listing listing){
+        this.listing = listing;
+    }
+
     public Listing getListing(){
         return listing;
     }
