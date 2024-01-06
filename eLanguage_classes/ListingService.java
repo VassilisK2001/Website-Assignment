@@ -6,11 +6,27 @@ import java.sql.*;
 
 public class ListingService {
 
+    
+    /**
+     * Saves a new listing to the database.
+     *
+     * @param teacher        Teacher associated with the listing
+     * @param file_name      File name of the listing
+     * @param language       Language of the listing
+     * @param experience     Experience required for the listing
+     * @param cefr           CEFR level of the listing
+     * @param education      Education level required for the listing
+     * @param certifications Certifications required for the listing
+     * @param price          Price per hour for the listing
+     * @throws Exception if an error occurs during the save operation
+     */
+
     public void saveListing(Teacher teacher, String file_name, String language, int experience, String cefr, String education, String certifications, double price ) 
     throws Exception{
 
 		Connection con = null;
 
+         // SQL query to insert a new listing into the database
 		String sql = "INSERT INTO listings(experience,education,price_per_hour,certifications,file_name,teacher_id,lang_id,cefr_id)" +
 		             "VALUES (?,?,?,?,?,?, (SELECT lang_id FROM languages WHERE lang_name = ?), (SELECT cefr_id FROM cefrlevels WHERE cefr_name = ?));";
 
@@ -32,6 +48,7 @@ public class ListingService {
             stmt.setString(8,cefr);
 			stmt.executeUpdate();
 
+            // Retrieve the generated keys to obtain the listing's ID
 			ResultSet rs = stmt.getGeneratedKeys();
 
 			if(rs.next()){
@@ -54,6 +71,14 @@ public class ListingService {
 	}
 
     //MyListings.jsp method
+
+    /**
+     * Retrieves listings associated with a specific teacher.
+     *
+     * @param teacher Teacher for whom listings are retrieved
+     * @return List of listings associated with the teacher
+     * @throws Exception if an error occurs during the retrieval
+     */
     public List<Listing> getTeacherListings(Teacher teacher) throws Exception{
 
         Connection con = null;
@@ -99,6 +124,7 @@ public class ListingService {
             // execute the SQL statement (QUERY - SELECT) and get the results in a ResultSet)
              rs = stmt.executeQuery();
 
+             // Populate the list with Listing objects
             while(rs.next()){
                 teacher_listings.add(new Listing(rs.getInt("listings.list_id"),new Teacher(rs.getInt("teachers.teacher_id"),rs.getString("teachers.firstName"),rs.getString("teachers.lastName"),
                 rs.getInt("teachers.age"),rs.getString("regions.region_name"), rs.getString("teachers.email"),rs.getString("teachers.username"),rs.getString("teachers.password")),
@@ -126,12 +152,23 @@ public class ListingService {
 	} 
 
     //newListingController.jsp method
+
+    /**
+     * Checks if a teacher has already created a listing for a specific language.
+     *
+     * @param teacher  Teacher to check for
+     * @param language Language to check uniqueness
+     * @return True if the language is already exists in a listing created by the teacher, false otherwise
+     * @throws Exception if an error occurs during the check
+     */
+
     public boolean checkUniqueLang(Teacher teacher, String language) throws Exception{
 
         Connection con = null;
 
         boolean flag = false;
 
+        // SQL query to count how many times a language appears in listings created by the teacher
         String sql = "SELECT COUNT(listings.lang_id) "
         +"FROM listings "
         +"INNER JOIN languages ON listings.lang_id = languages.lang_id "
@@ -150,6 +187,7 @@ public class ListingService {
 
             if(rs.next()){
 
+                // If the language already appears in one of teacher's listings return true, otherwise false
                 if(rs.getInt("COUNT(listings.lang_id)") >= 1){
                     flag = true;
                 } 
@@ -173,6 +211,15 @@ public class ListingService {
     }
 
     //ListingsByLanguage.jsp
+
+     /**
+     * Retrieves listings associated with a specific language.
+     *
+     * @param language Language for which listings are retrieved
+     * @return List of listings associated with the language
+     * @throws Exception if an error occurs during the retrieval
+     */
+
     public List<Listing> getLangListings(String language) throws Exception{
 
         Connection con = null;
@@ -213,6 +260,7 @@ public class ListingService {
             stmt.setString(1, language);
             rs = stmt.executeQuery();
 
+            // Populate the list with Listing objects
             while(rs.next()){
 
                 lang_listings.add(new Listing(rs.getInt("listings.list_id"),new Teacher(rs.getInt("teachers.teacher_id"),rs.getString("teachers.firstName"),rs.getString("teachers.lastName"),
@@ -238,11 +286,21 @@ public class ListingService {
         }   
     }  
 
+    /**
+     * Deletes a listing from the database.
+     *
+     * @param listingId ID of the listing to be deleted
+     * @throws Exception if an error occurs during the deletion
+     */
+
     public void deleteListing(int listingId) throws Exception {
 
         Connection con = null;
 
+        // First delete the ID of the listing from the table interest, where it is stored as foreign key
         String sql1 = "DELETE FROM interest WHERE list_id = ?;";
+
+        // Then delete the ID of the listing from the listings table
         String sql2 = "DELETE FROM listings WHERE list_id = ?;";
 
         DB db = new DB();

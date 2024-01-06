@@ -3,6 +3,8 @@
 <%@ page import="java.util.*" %>
 
 <%
+
+// Check if the teacher object is not present in the session, set an error message, and forward to the login page
 if(session.getAttribute("teacherObj") == null){
     request.setAttribute("message","You are not authorized to access this page. Please sign in.");
 
@@ -10,13 +12,17 @@ if(session.getAttribute("teacherObj") == null){
 <jsp:forward page="login.jsp"/>
 <%
 }
+
+// Retrieve the teacher object from the session
 Teacher teacher = (Teacher) session.getAttribute("teacherObj");
 
+// Retrieve language, region, and CEFR levels from the database
 DBDAO dbdao = new DBDAO();
 List<String> languages = dbdao.getLanguages();
 List<String> regions = dbdao.getRegions();
 List<String> cefrlevels = dbdao.getCEFRlevels();
 
+// Create an instance of ListingService to get teacher's existing listings
 ListingService listserv = new ListingService();
 List<Listing> listings = listserv.getTeacherListings(teacher);
 %>
@@ -39,12 +45,17 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
             <div class="logo">
                 <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
                 </div>
+            
+            <!-- Display teacher's username and navigation links -->
             <nav class="nav-menu">
                 <span class="signed-in-info">
                     <%=teacher.getUsername()%>
                 </span>
                 <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
                 <a href="Index.jsp">About</a>
+
+                <!-- Only display navigation links for teacher home page and new listing form if the teacher hasn't created any listings. Otherwise,
+                also display navigation links to see personal listings and interested students.-->
 
                 <% if(listings.isEmpty()) {  %>
 
@@ -63,7 +74,7 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
             </nav>
         </header>
 
-        
+        <!-- Display error message from the request if any-->
         <% if(request.getAttribute("message") != null){ %>
 
             <div class="message">
@@ -74,9 +85,12 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
         <div class="container">
             <h1>Create Listing</h1>
 
+            <!-- Form for creating a new listing -->
             <form action="newListingController.jsp" method="post"  enctype="multipart/form-data" class="form-horizontal">
             <div class="flex-container">
             <div class="left-container">
+
+             <!-- Section for personal information -->
             <section>
                 <h3>Personal Information</h3>
                   
@@ -111,6 +125,8 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
         </div>
 
         <div class="right-container">
+
+            <!-- Section for qualifications -->
             <section>
                 <h3>Qualifications</h3>
                 

@@ -6,6 +6,15 @@ import java.sql.*;
 
 public class InterestService {
 
+    /**
+     * Adds a new student interest entry to the database.
+     *
+     * @param listing_id     The ID of the listing
+     * @param student_id     The ID of the student expressing interest
+     * @param interest_date  The date when the interest was expressed
+     * @throws Exception if an error occurs during database interaction
+     */
+
     public void addStudentInterest(int listing_id, int student_id, String interest_date) throws Exception {
 
         Connection con = null;
@@ -36,6 +45,14 @@ public class InterestService {
         }
     }
 
+    
+    /**
+     * Retrieves a list of students who have expressed interest in listings associated with a specific teacher.
+     *
+     * @param teacher_id The ID of the teacher
+     * @return A list of Interest objects representing student interests
+     * @throws Exception if an error occurs during database interaction
+     */
 
     public List<Interest> getInterestedStudents(int teacher_id) throws Exception {
 
@@ -89,7 +106,7 @@ public class InterestService {
         "WHERE " +
             "teachers.teacher_id = ? " +
         "GROUP BY " +
-            "students.username, students.email;";
+            "students.username, listings.list_id;";
 
 
         DB db =  new DB();
@@ -102,6 +119,7 @@ public class InterestService {
             stmt.setInt(1,teacher_id);
             rs = stmt.executeQuery();
 
+            // Add Interest objects  to the list
             while(rs.next()){
                 interested_students.add(new Interest(new Student(rs.getInt("students.student_id"),rs.getString("student_firstName"),rs.getString("student_lastName"),
                 rs.getInt("student_age"),rs.getString("student_region_name"),rs.getString("student_email"),rs.getString("student_username"),rs.getString("student_password")),

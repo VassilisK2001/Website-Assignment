@@ -4,6 +4,8 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%
+
+// Check if the user is not signed in, set an error message, and forward to the login page
 if(session.getAttribute("studentObj") == null){
     request.setAttribute("message","You are not authorized to access this page. Please sign in.");
 
@@ -14,7 +16,7 @@ if(session.getAttribute("studentObj") == null){
 // get student object from session
 Student student = (Student) session.getAttribute("studentObj");
 
-// read language parameter
+// read language parameter from request
 String language = request.getParameter("language");
 
 // create instance of ListingService
@@ -39,6 +41,8 @@ ListingService listserv = new ListingService();
         <div class="logo">
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
+
+        <!-- Display signed-in information and navigation links -->
         <nav class="nav-menu">
             <span class="signed-in-info">
                 <%=student.getUsername()%> 
@@ -52,11 +56,14 @@ ListingService listserv = new ListingService();
     <main class="language-listings">
 
     <% 
+
+    // Retrieve a list of listings for the specified language
     List<Listing> listings = listserv.getLangListings(language);
         
     if(listings.isEmpty()){
     %>
 
+        <!-- Display a message when no listings are available for the language selected -->
         <div class="language-info" style="background-color: #FFB833;">
             <h2>There are no listings available for this language</h2>
         </div>
@@ -65,16 +72,19 @@ ListingService listserv = new ListingService();
     } else {
     %>
 
+    <!-- Display language information -->
     <div class="language-info">
         <h2><%=language%></h2>
     </div>
 
+    <!-- Loop through listings and display information for each -->
     <%
         for(Listing listing: listings){
     %>
 
         <div class="teacher-listings">
-            <!-- Teacher listings for English language -->
+
+            <!-- Teacher card for the listing -->
             <div class="teacher-card">
                 <img src="<%=request.getContextPath()%>/images/<%=listing.getFileName()%>">
                 <div class="teacher-details">
@@ -86,6 +96,7 @@ ListingService listserv = new ListingService();
                     <p>CEFR Level: <%=listing.getTeachComp()%></p>
                     <p>Education: <%=listing.getEducation()%></p>
 
+                     <!-- Display certifications if available -->
                     <% if(!listing.getCertifications().equals("")){ %>
 
                     <p>Certifications: <%=listing.getCertifications()%></p>
@@ -93,10 +104,14 @@ ListingService listserv = new ListingService();
                     <% } %> 
 
                     <p>Price per Hour: <%=listing.getPrice()%> euros</p>
+
+                    <!-- Show Interest button with associated popup -->
                     <span>
                         <button type="submit" class="show-interest-button" onclick="openPopup('<%=listing.getId()%>'); sendData('<%=listing.getId()%>','<%=student.getId()%>') ">
                             Show Interest
                         </button>
+
+                         <!-- Popup for successful interest declaration -->
                         <div class="popup" id="popup_<%=listing.getId()%>">
                             <img src="<%=request.getContextPath()%>/images/tickmark.png">
                             <h2>Thank you</h2>
@@ -115,6 +130,7 @@ ListingService listserv = new ListingService();
 }
 %>
 
+ <!-- JavaScript section for popup functionality -->
 <script>
 
     function openPopup(listingId){
@@ -127,6 +143,7 @@ ListingService listserv = new ListingService();
         popup.classList.remove("open-popup");
     }
 
+    // Function to get date that the interest was diclared
     function formatDate(date) {
         // Format the date to DD/MM/YYYY
         var day = date.getDate();
@@ -141,6 +158,7 @@ ListingService listserv = new ListingService();
     }
 
 
+    // Function to format and send data to the server for tracking interest
     function sendData(listingId,studentId) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "TrackInterest.jsp", true);
@@ -157,6 +175,7 @@ ListingService listserv = new ListingService();
     }
 </script>
 
+        <!-- Button to return to language selection page -->
          <button class="select-lang-button" onclick="location.href='Select_language.jsp'">
             <i class="fa-solid fa-arrow-left"></i> <b>Select another language</b>
         </button>

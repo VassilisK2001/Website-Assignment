@@ -15,6 +15,7 @@
 
 <%
 
+// Check if the request method is not POST, and whether the teacher is authenticated
 if(!request.getMethod().equals("POST")){
     if(session.getAttribute("teacherObj") == null){
         throw new Exception("You are not authorized to access this resource.Please <a href='login.jsp'>sign in</a>.");
@@ -22,7 +23,8 @@ if(!request.getMethod().equals("POST")){
         throw new Exception("No parameters specified.Please click <a href='CreateListing.jsp'>here</a> to create your listing.");
     }
 }
-    
+
+// Variables for validation and error messages
 List<Integer> index = new ArrayList<Integer>();
 String intnum_pattern = "-?\\d+"; 
 String realnum_pattern = "[-+]?\\d*\\.?\\d+";
@@ -45,15 +47,20 @@ Teacher teacher = (Teacher) session.getAttribute("teacherObj");
 // create ListingService object
 ListingService listserv = new ListingService();
 
+// Check if the form is multipart (contains file uploads)
 boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 %>
 
 <%!  
+
+// Helper method to count words in a string
 public static int countWords(String value){
     String[] words = value.split("[\\s.,]+");
     int wordCount = words.length;
     return wordCount;
 }
+
+// Helper method to check if a string matches a given pattern
 public static boolean match(String epattern, String parValue){
     Pattern pattern = Pattern.compile(epattern);
     Matcher m = pattern.matcher(parValue);
@@ -108,6 +115,8 @@ if(isMultipart){
                 String fieldName = item.getFieldName();
                 String fieldValue = item.getString("UTF-8");
 
+                // Validate and compare form fields with teacher's information from registration
+
                 if(fieldName.equals("firstName")){
                     if(!fieldValue.equals(teacher.getFirstname())){
                         countErrors++;
@@ -123,6 +132,8 @@ if(isMultipart){
                 }
 
                 if(fieldName.equals("age")){
+
+                    // Validate the age input using helper method
                     if(match(intnum_pattern, fieldValue) == false){
                         countErrors++;
                         index.add(3);
@@ -153,6 +164,7 @@ if(isMultipart){
 
                 if(fieldName.equals("language")){
 
+                       // Call method from ListingService to check whether the teacher has already created a listing for the language selected.
                        flag = listserv.checkUniqueLang(teacher, fieldValue);
                         
                         if(flag == false){
@@ -161,12 +173,15 @@ if(isMultipart){
                             request.setAttribute("message","Listing with this language already exists");
                     %>
 
+                    <!-- Redirect to new listing form -->
                     <jsp:forward page="CreateListing.jsp"/>
                 <%
                     }
                 }
 
                 if(fieldName.equals("experience")){
+
+                    // Use helper method to validate years of experience 
                     if(match(intnum_pattern,fieldValue) == false){
                         countErrors++;
                         index.add(6);
@@ -184,6 +199,8 @@ if(isMultipart){
                 }
 
                 if(fieldName.equals("education")){
+
+                    // Use helper method to ensure derired length of education field
                     if(countWords(fieldValue) < 3 || countWords(fieldValue) > 50){
                         countErrors++;
                         index.add(7);
@@ -193,6 +210,8 @@ if(isMultipart){
                 }
 
                 if(fieldName.equals("certifications")){
+
+                    // Use helper method to ensure derired length of certifications field if provided by the teacher
                     if(fieldValue != null && fieldValue.length() >= 1){
                         if(countWords(certifications) < 2 || countWords(certifications) > 50){
                             countErrors++;
@@ -204,6 +223,8 @@ if(isMultipart){
                 }
 
                 if(fieldName.equals("pricePerHour")){
+
+                    // Use helper method to validate input for pricePerHour field
                     if(match(realnum_pattern,fieldValue) == false){
                         countErrors++;
                         index.add(9);
@@ -244,6 +265,8 @@ if(isMultipart){
 %>
 
 <%
+
+// Check for validation errors and display appropriate messages
 if(countErrors != 0){
 %>
 
@@ -279,11 +302,14 @@ if(countErrors != 0){
     </div>
 </div>
 
+<!-- Button to go back to the form if new listing form has errors -->
 <button class="check-button" onclick="location.href='CreateListing.jsp'">
     <i class="fa-solid fa-arrow-left"></i> <b>Back to form</b>
 </button>
 
 <% } else {
+
+    // If no errors, save the listing in the database and show success message
     listserv.saveListing(teacher,photo,language,experience,teachcomp,education,certifications,price);
     newlisting_success = true;
 %>
@@ -296,6 +322,7 @@ if(countErrors != 0){
             
         </div>
 
+        <!-- Button to check the new listing in other page -->
         <button class="check-button" onclick="location.href='MyListings.jsp'">
             <i class="fa-solid fa-arrow-right"></i> <b>Check your new listing here</b>
         </button>
@@ -309,6 +336,7 @@ if(countErrors != 0){
 
     <% if (newlisting_success) {  %>
 
+        <!-- JavaScript to generate animated confetti if the new listing is successfully created -->
         <script>
 
             // to start

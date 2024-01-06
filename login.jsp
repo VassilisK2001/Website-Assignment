@@ -27,6 +27,7 @@
             </nav>
         </header>
 
+<!-- Display error message if credentials are wrong -->
 <% if (request.getAttribute("message") != null) { %>
 
         <div class="message">
@@ -34,6 +35,7 @@
         </div>
 <% } %>
 
+ <!-- Sign In Form Section -->
         <div class="inner-container">
             <h1>Sign In</h1>
             <form action="loginController.jsp" method="post" accept-charset="UTF-8" class="form-horizontal">

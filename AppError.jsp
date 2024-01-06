@@ -40,7 +40,11 @@
                 List<Listing> listings = listserv.getTeacherListings(teacher);   
             %>
                 <nav class="nav-menu">
-                    <span class="signed-in-info">Signed in as <%=teacher.getUsername()%></span>
+                    <span class="signed-in-info">
+                        <%=teacher.getUsername()%>
+                    </span>
+                    <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
+                    
                     <a href="Index.jsp" class="active">About</a>
                     <a href="CreateListing.jsp">Create Listing</a>
 

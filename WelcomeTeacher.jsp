@@ -3,6 +3,8 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%
+
+// Check if the teacher object is not present in the session, set an error message, and forward to the login page
 if(session.getAttribute("teacherObj") == null){
     request.setAttribute("message","You are not authorized to access this page. Please sign in.");
 
@@ -10,6 +12,8 @@ if(session.getAttribute("teacherObj") == null){
 <jsp:forward page="login.jsp"/>
 <%
 }
+
+// Retrieve the teacher object from the session
 Teacher teacher = (Teacher) session.getAttribute("teacherObj");
 %>
 
@@ -31,6 +35,8 @@ Teacher teacher = (Teacher) session.getAttribute("teacherObj");
         <div class="logo">
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
+
+        <!-- Display teacher's username and navigation links -->
         <nav class="nav-menu">
           <span class="signed-in-info">
             <%=teacher.getUsername()%>

@@ -4,6 +4,7 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%
+// Check if the user is not signed in, set an error message, and forward to the login page
 if(session.getAttribute("studentObj") == null){
     request.setAttribute("message","You are not authorized to access this page. Please sign in.");
 
@@ -11,10 +12,11 @@ if(session.getAttribute("studentObj") == null){
 <jsp:forward page="login.jsp"/>
 <%
 }
+// Retrieve the student object from the session
 Student student = (Student) session.getAttribute("studentObj");
 
+// Access the database to get the list of languages
 DBDAO dbdao =  new DBDAO();
-
 List<String> languages = dbdao.getLanguages();
 
 %>
@@ -38,6 +40,8 @@ List<String> languages = dbdao.getLanguages();
         <div class="logo">
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
+
+        <!-- Display signed-in information and navigation links -->
         <nav class="nav-menu">
             <span class="signed-in-info">
                 <%=student.getUsername()%>
@@ -50,10 +54,14 @@ List<String> languages = dbdao.getLanguages();
     </header>
 
         <div class="container">
+
+             <!-- Language selection form -->
             <p class="language-question">Which language do you want to learn?</p>
+
             <form action="ListingsByLanguage.jsp" method="post" class="form-horizontal">
                 <select id="language" name="language">
 
+                    <!-- Populate the select dropdown with language options -->
                     <% for (String language: languages) { %>
 
                     <option value="<%= language %>"><%= language%></option>

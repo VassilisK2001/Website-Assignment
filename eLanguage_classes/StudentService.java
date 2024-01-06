@@ -6,10 +6,21 @@ import java.sql.*;
 
 public class StudentService {
 
+	
+    /**
+     * Authenticates a student based on the provided username and password.
+     *
+     * @param username Student's username
+     * @param password Student's password
+     * @return Authenticated student
+     * @throws Exception if an error occurs during authentication
+     */
+
     public Student authenticate(String username, String password) throws Exception {
     
 		Connection con = null;
 
+		// List to store retrieved students
 		List<Student> students = new ArrayList<Student>();
 
 		String sql = 
@@ -38,6 +49,7 @@ public class StudentService {
 			stmt = con.prepareStatement(sql);
 			rs = stmt.executeQuery();
 
+			// Populate the list with student objects
 			while(rs.next()){
 				students.add(new Student(rs.getInt("students.student_id"),rs.getString("students.firstName"),rs.getString("students.lastName"),rs.getInt("students.age"),
 				rs.getString("regions.region_name"), rs.getString("students.email"), rs.getString("students.username"), rs.getString("students.password")));
@@ -47,6 +59,7 @@ public class StudentService {
 			stmt.close();
 			db.close();
 
+			// Check if the provided username and password match any student in the list
 			for (Student student: students) {
 
 				if (student.getUsername().equals(username) && student.getPassword().equals(password)) {
@@ -68,6 +81,20 @@ public class StudentService {
 
     } // End of authenticate
 
+
+	
+    /**
+     * Saves a new student to the database.
+     *
+     * @param firstname Student's first name
+     * @param lastname  Student's last name
+     * @param age       Student's age
+     * @param region    Student's region
+     * @param email     Student's email
+     * @param username  Student's username
+     * @param password  Student's password
+     * @throws Exception if an error occurs during the save operation
+     */
 
 	public void saveStudent(String firstname, String lastname, int age, String region, String email, String username, String password) throws Exception{
 
@@ -93,6 +120,7 @@ public class StudentService {
 			stmt.setString(7,region);
 			stmt.executeUpdate();
 
+			// Retrieve the generated keys to obtain the student's ID
 			ResultSet rs = stmt.getGeneratedKeys();
 
 			if(rs.next()){
@@ -114,6 +142,14 @@ public class StudentService {
 		}			
 	}
 
+	/**
+     * Checks if a student with the given username or password already exists in the database.
+     *
+     * @param username Student's username
+     * @param password Student's password
+     * @throws Exception if a student with the provided username or password already exists
+     */
+
 	public void checkStudentExists(String username, String password) throws Exception {
 
 		Connection con = null;
@@ -132,6 +168,7 @@ public class StudentService {
 			stmt.setString(2,password);
 			rs = stmt.executeQuery();
 
+			// If a student is found, throw an exception
 			if(rs.next()){
 				throw new Exception("Student with this username or password already exists.");
 			}

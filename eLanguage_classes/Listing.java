@@ -3,14 +3,14 @@ package eLanguage_classes;
 public class Listing {
     
     private int id;
-    private Teacher creator;
-    private String file_name;
-    private String language;
-    private int experience;
-    private String teach_comp;
-    private String education;
-    private String certifications;
-    private double price;
+    private Teacher creator;  // The Teacher object representing the creator of the listing
+    private String file_name; // The name of the file associated with the photo of the lteacher who creates the listing
+    private String language;  // The foreign language that the teacher wants to teach
+    private int experience;   // Years of experience teaching the foreign language 
+    private String teach_comp; // Teaching Competency ranging from A1 to C2 level
+    private String education;  // Abrief description related to teacher's education
+    private String certifications; // Additional certifications if the teacher has any
+    private double price;  // Price per hour defined by the teacher for private lessons 
 
     public Listing(int id, Teacher creator, String file_name, String language, int experience, String teach_comp, String education, String certifications, double price){
         

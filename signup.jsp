@@ -4,8 +4,10 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%   
+// Database Data Access Object to fetch regions
 DBDAO dbdao = new DBDAO();
 List<String> regions = dbdao.getRegions();
+
 %>
 
 
@@ -34,6 +36,7 @@ List<String> regions = dbdao.getRegions();
             </nav>
         </header>
 
+         <!-- Display a message if user tries to sign in with wrong credentials -->
         <% if (request.getAttribute("message") != null) { %>
 
             <div class="message">
@@ -42,6 +45,7 @@ List<String> regions = dbdao.getRegions();
             
         <% } %>
     
+         <!-- Signup Form Section -->
         <div class="inner-container">
             <h1>Create Account</h1>
             <form action="registerController.jsp" method="post" accept-charset="UTF-8" class="form-horizontal">

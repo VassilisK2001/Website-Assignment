@@ -24,7 +24,8 @@
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
         <% if(session.getAttribute("studentObj") == null && session.getAttribute("teacherObj") == null) { %>
-            
+
+            <!-- Display navigation links for unauthenticated users -->
         <nav class="nav-menu">
             <a href="Index.jsp" class="active">About</a>
             <a href="signup.jsp">Register</a>
@@ -35,23 +36,33 @@
             if(session.getAttribute("studentObj") == null){
                 Teacher teacher = (Teacher) session.getAttribute("teacherObj"); 
 
+                // Service to retrieve teacher's listings
                 ListingService listserv = new ListingService();
                 List<Listing> listings = listserv.getTeacherListings(teacher);   
-            %>
+        %>
+
+            <!-- Display navigation links for authenticated teachers -->
                 <nav class="nav-menu">
-                    <span class="signed-in-info">Signed in as <%=teacher.getUsername()%></span>
+                    <span class="signed-in-info">
+                        <%=teacher.getUsername()%>
+                    </span>
+                    <img class="user-img" src="<%=request.getContextPath()%>/images/user.png">
                     <a href="Index.jsp" class="active">About</a>
                     <a href="CreateListing.jsp">Create Listing</a>
 
                     <% if(!listings.isEmpty()) { %>
                     <a href="MyListings.jsp">My Listings</a>
                     <a href="InterestedStudents.jsp">Interested Students</a>
+
                     <% }  %>
+
                     <a href="logout.jsp"><span><i class="fas fa-arrow-right-from-bracket"></i></span>Log Out</a>
                   </nav>
             <% } else { 
                 Student student = (Student) session.getAttribute("studentObj");   
             %>
+
+            <!-- Display navigation links for authenticated students -->
                 <nav class="nav-menu">
                     <span class="signed-in-info">
                         <%=student.getUsername()%>
@@ -84,6 +95,7 @@
         </div>
     </div>
     
+    <!-- Include Footer Section -->
     <%@ include file="footer.jsp" %>
     
 </body>

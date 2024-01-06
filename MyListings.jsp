@@ -4,16 +4,25 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%
+
+// Check if the teacher is not authenticated; if not, forward to login page
 if(session.getAttribute("teacherObj") == null){
     request.setAttribute("message","You are not authorized to access this page. Please sign in.");
 
 %>
+
 <jsp:forward page="login.jsp"/>
+
 <%
 }
+
+// Get the teacher object from the session
 Teacher teacher = (Teacher) session.getAttribute("teacherObj");
 
+// Create a ListingService object
 ListingService listserv = new ListingService();
+
+// Get the list of listings the teacher has created
 List<Listing> listings = listserv.getTeacherListings(teacher);
 %>
 
@@ -36,6 +45,8 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
         <div class="logo">
             <img src="<%=request.getContextPath()%>/images/Logo.png" alt="Logo">
         </div>
+
+         <!-- Display teacher's information in the navigation -->
         <nav class="nav-menu">
             <span class="signed-in-info">
                 <%=teacher.getUsername()%>
@@ -46,8 +57,12 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
             <a href="MyListings.jsp" class="active">My Listings</a>
 
             <% if (!listings.isEmpty()) {  %>
+            
+            <!-- Show navigation link for Interested Students page only if the teacher has created listings-->
             <a href="InterestedStudents.jsp">Interested Students</a>
+
             <%  } %>
+
             <a href="logout.jsp"><span><i class="fas fa-arrow-right-from-bracket"></i></span>Log Out</a>
             
         </nav>
@@ -55,32 +70,39 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
   <div class="container">
     <main class="language-listings">
 
+         <!-- Check if the teacher has no listings and display a message if there are none -->
         <% if (listings.isEmpty()) { %>
 
         <div class="language-info" style="background-color: #FFB833;">
             <h2>You have not created any listings</h2>
         </div>
 
+         <!-- Button to create a new listing -->
         <button class="new-listing-button" onclick="location.href='CreateListing.jsp'">
             <i class="fa-solid fa-arrow-right"></i> <b>Create your listing here</b>
         </button>
 
         <% } else {  %>
         
+        <!-- Display listings if the teacher has created listings -->
         <div class="language-info">
             <h2>My Listings</h2>
         </div>
 
         <div class="teacher-listings" id="listingsContainer">
+
+             <!-- Loop through each listing and display details -->
             
             <% for(Listing listing:listings) { 
 
+                // Process and format text for better display
                 String education = listing.getEducation();
                 education = education.replace("\n", "<br>");
                 listing.setEducation(education);
 
                 if(!listing.getCertifications().equals("")){
 
+                    // Process certifications if there are any
                     String certifications = listing.getCertifications();
                     certifications = certifications.replace("\n", "<br>");
                     listing.setCertifications(certifications);
@@ -116,6 +138,8 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
 
                     <p>Price per Hour: <%=listing.getPrice()%> euros</p>
                     <span>
+
+                        <!-- button to allow listing deletion-->
                         <button type="submit" class="delete-listing-button" onclick="confirmDelete('<%=listing.getId()%>')">
                             Delete listing 
                         </button>
@@ -131,7 +155,10 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
 }
 %>
 
+<!-- JavaScript functions for confirming and handling listing deletion -->
 <script>
+
+     // Function to confirm listing deletion
     function confirmDelete(listingId) {
         swal({
             title: "Are you sure?",
@@ -151,6 +178,7 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
     }
 
 
+    // Function to handle the actual deletion of the listing
     function deleteListing(listingId) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "DeleteListing.jsp", true);
@@ -181,6 +209,7 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
     }
 
 
+    // Function to reorder listings after listing deletion
     function reorderListings() {
         // Get the container element
         var container = document.getElementById("listingsContainer");

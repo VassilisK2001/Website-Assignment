@@ -2,9 +2,9 @@ package eLanguage_classes;
 
 public class Interest {
 
-    private Student student;
-    private Listing listing;
-    private String interest_date;
+    private Student student;  // Student object representing the interested student
+    private Listing listing;  // Listing object representing the listing of interest
+    private String interest_date;  // Date when the interest was expressed
     
     public Interest(Student student,Listing listing, String interest_date) {
         this.student = student;

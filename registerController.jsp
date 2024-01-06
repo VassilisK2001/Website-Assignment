@@ -5,11 +5,12 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%
-
+// Check if the request method is POST; otherwise, throw an exception
 if(!request.getMethod().equals("POST")) {
     throw new Exception("No parameters specified. Please visit <a href='signup.jsp'>registration form</a>");
 }
 
+// Extract parameters from the request
 String name = new String(request.getParameter("firstName").getBytes("ISO-8859-1"),"UTF-8");
 String surname = new String(request.getParameter("lastName").getBytes("ISO-8859-1"),"UTF-8");
 String agePar = request.getParameter("age");
@@ -20,6 +21,7 @@ String password = new String(request.getParameter("password").getBytes("ISO-8859
 String confirm = new String(request.getParameter("confirm").getBytes("ISO-8859-1"),"UTF-8");
 String role = request.getParameter("role");
 
+// Initialize variables for validation
 List<Integer> index = new ArrayList<Integer>();
 int age = 0;
 String age_error_msg = "";
@@ -50,6 +52,7 @@ boolean signup_success = false;
 
     </header>
 
+<!-- Main Section for Checking Errors -->
 <div class="container">
 
     <main class="check-for-errors">
@@ -63,6 +66,7 @@ if(surname.length() < 3) {
     countErrors++;
     index.add(2);
 }  
+// Regural expression for age validation
 String epattern = "-?\\d+";
 Pattern pattern = Pattern.compile(epattern);
 Matcher ma = pattern.matcher(agePar);
@@ -86,7 +90,7 @@ if(!ma.matches()){
         }
     }
 }
-
+// Regural expression for email validation
 String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";
 Pattern p = Pattern.compile(regex);
 Matcher m = p.matcher(email);
@@ -96,6 +100,7 @@ if(!m.matches()) {
     index.add(4);
 }
 
+// Regural expression for username validation
 String pat = "^[\\p{L}0-9_\\-!.@#$%^&*()+=]*$";
 Pattern pt = Pattern.compile(pat);
 Matcher mat = pt.matcher(username);
@@ -118,6 +123,7 @@ if(role == null || role.isEmpty()){
 }
 %>
 
+<!-- Validation Logic -->
 <%
 if(countErrors != 0){
 %>
@@ -126,6 +132,7 @@ if(countErrors != 0){
     <h2>Registration form has errors!</h2>
 </div>
 
+<!-- Display error messages -->
 <div class="list">
     <div class="card">
         <div class="details">
@@ -152,25 +159,31 @@ if(countErrors != 0){
     </div>
 </div>
 
+<!-- Button to go back to the signup form -->
 <button class="check-button" onclick="location.href='signup.jsp'">
     <i class="fa-solid fa-arrow-left"></i> <b>Back to form</b>
 </button>
 
 <% } else { 
+
+    // Processing successful signup
     if(role.equals("student")){
 
         StudentService stserv = new StudentService();
 
         try{
+            // Call method to check if student exists
             stserv.checkStudentExists(username, password);
         }catch(Exception e) {
             request.setAttribute("message",e.getMessage());
         %>
 
+        <!-- Redirect to signup form if student exists-->
         <jsp:forward page = "signup.jsp" />
 
         <%  
         }
+        // Save student to database if signup is successful
         stserv.saveStudent(name, surname, age, region, email, username, password);
         signup_success = true;
 
@@ -179,20 +192,24 @@ if(countErrors != 0){
         TeacherService teachserv = new TeacherService();
 
         try{
+            // Call method to check if student exists
             teachserv.checkTeacherExists(username, password);
         }catch(Exception e) {
             request.setAttribute("message",e.getMessage());
         %>
 
+        <!-- Redirect to signup form if teacher exists-->
         <jsp:forward page = "signup.jsp" />
 
         <%
         }
+        // Save teacher to database if signup is successful
         teachserv.saveTeacher(name, surname, age, region, email, username, password);
         signup_success = true;
     } 
 %>
 
+ <!-- Display success message and user details -->
 <div class="message" style="background-color: #00BFFF;">
     <h2>You have successfully signed up!</h2>
 </div>
@@ -213,6 +230,7 @@ if(countErrors != 0){
     </div>
 </div>
 
+ <!-- Button to go to the login form after successful registration -->
 <button class="check-button" onclick="location.href='login.jsp'">
     <i class="fa-solid fa-arrow-right"></i> <b>Go to Login Form</b>
 </button>
@@ -227,6 +245,7 @@ if(countErrors != 0){
    <%@ include file="footer.jsp"%>
 
 
+<!-- Confetti Animation Script if signup is successful -->
 <% if (signup_success) {  %>
 
 <script>

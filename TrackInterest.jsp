@@ -4,10 +4,13 @@
 
 
 <%
+
+// Check if the request method is not POST, and throw an exception with a sign-in link
 if(!request.getMethod().equals("POST")){
     throw new Exception("You are not authorized to access this resource.Please <a href='login.jsp'>sign in</a>.");
 }
 
+// Retrieve parameters from the request
 String studentId = request.getParameter("student_id");
 String listingId = request.getParameter("listing_id");
 String interest_date = request.getParameter("interest_date");
@@ -17,9 +20,12 @@ String interest_date = request.getParameter("interest_date");
             int student_id = Integer.parseInt(studentId);
             int listing_id = Integer.parseInt(listingId);
 
+            // Create an instance of InterestService
             InterestService trackService = new InterestService();
 
-            try{               
+            try{        
+                
+                // Add student interest using the provided parameters
                 trackService.addStudentInterest(listing_id, student_id, interest_date);
 
             }catch(Exception e){

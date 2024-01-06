@@ -4,16 +4,25 @@
 <%@ page errorPage="AppError.jsp" %>
 
 <%
+
+// Check if the user is not logged in; if not, forward to the login page
 if(session.getAttribute("teacherObj") == null){
     request.setAttribute("message","You are not authorized to access this page. Please sign in.");
 
 %>
+
 <jsp:forward page="login.jsp"/>
+
 <%
 }
+
+// Retrieve the teacher object from the session
 Teacher teacher = (Teacher) session.getAttribute("teacherObj");
 
+// Create a ListingService object to interact with listings
 ListingService listserv = new ListingService();
+
+// Retrieve the list with teacher's listings
 List<Listing> listings = listserv.getTeacherListings(teacher);
 %>
 
@@ -66,7 +75,10 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
 
       <% } else { 
 
+        // Create an InterestService object to interact with students' interest in teacher listings
         InterestService interestserv = new InterestService();
+
+        // Retrieve the students interested in the teacher's listings
         List<Interest> interested_students = interestserv.getInterestedStudents(teacher.getId()); 
       %>
 
@@ -74,6 +86,7 @@ List<Listing> listings = listserv.getTeacherListings(teacher);
         <h2>Interested Students</h2>
       </div>
 
+    <!-- Display information about interested students (if there are any) and the listings they are interested in-->
     <table class="content-table">
         <thead>
           <tr>
