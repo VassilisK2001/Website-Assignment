@@ -213,7 +213,7 @@ if(isMultipart){
 
                     // Use helper method to ensure derired length of certifications field if provided by the teacher
                     if(fieldValue != null && fieldValue.length() >= 1){
-                        if(countWords(certifications) < 2 || countWords(certifications) > 50){
+                        if(countWords(fieldValue) < 2 || countWords(fieldValue) > 50){
                             countErrors++;
                             index.add(8);
                         } else {
