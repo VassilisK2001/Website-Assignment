@@ -125,6 +125,10 @@ if(role == null || role.isEmpty()){
 
 <!-- Validation Logic -->
 <%
+// Set session timeout to 15 minutes
+int sessionTimeoutSeconds = 15 * 60;
+session.setMaxInactiveInterval(sessionTimeoutSeconds);
+
 if(countErrors != 0){
 %>
 

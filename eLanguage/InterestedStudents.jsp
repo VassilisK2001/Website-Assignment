@@ -16,6 +16,10 @@ if(session.getAttribute("teacherObj") == null){
 <%
 }
 
+// Set session timeout to 15 minutes
+int sessionTimeoutSeconds = 15 * 60;
+session.setMaxInactiveInterval(sessionTimeoutSeconds);
+
 // Retrieve the teacher object from the session
 Teacher teacher = (Teacher) session.getAttribute("teacherObj");
 

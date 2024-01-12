@@ -27,13 +27,12 @@
             </nav>
         </header>
 
-<!-- Display error message if credentials are wrong -->
-<% if (request.getAttribute("message") != null) { %>
-
+    <% if (request.getAttribute("message") != null) { %>
+        <!-- Display error message -->
         <div class="message">
             <h2><%=(String) request.getAttribute("message")%></h2>
         </div>
-<% } %>
+    <% } %>
 
  <!-- Sign In Form Section -->
         <div class="inner-container">

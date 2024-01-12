@@ -33,7 +33,13 @@
         </nav>
 
         <% } else {
+
+            // Set session timeout to 15 minutes
+            int sessionTimeoutSeconds = 15 * 60;
+            session.setMaxInactiveInterval(sessionTimeoutSeconds);
+
             if(session.getAttribute("studentObj") == null){
+
                 Teacher teacher = (Teacher) session.getAttribute("teacherObj"); 
 
                 // Service to retrieve teacher's listings

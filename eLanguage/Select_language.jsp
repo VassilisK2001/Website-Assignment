@@ -12,6 +12,10 @@ if(session.getAttribute("studentObj") == null){
 <jsp:forward page="login.jsp"/>
 <%
 }
+// Set session timeout to 15 minutes
+int sessionTimeoutSeconds = 15 * 60;
+session.setMaxInactiveInterval(sessionTimeoutSeconds);
+
 // Retrieve the student object from the session
 Student student = (Student) session.getAttribute("studentObj");
 

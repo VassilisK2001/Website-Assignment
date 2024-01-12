@@ -265,6 +265,9 @@ if(isMultipart){
 %>
 
 <%
+// Set session timeout to 15 minutes
+int sessionTimeoutSeconds = 15 * 60;
+session.setMaxInactiveInterval(sessionTimeoutSeconds);
 
 // Check for validation errors and display appropriate messages
 if(countErrors != 0){
