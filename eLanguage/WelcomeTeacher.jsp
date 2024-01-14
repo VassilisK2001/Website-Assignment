@@ -58,7 +58,7 @@ Teacher teacher = (Teacher) session.getAttribute("teacherObj");
     </header>
 
     <div class="content">
-        <h1>Welcome!</h1>
+        <h1>Welcome <%=teacher.getUsername()%>!</h1>
         <h3>Thank you for choosing eLanguage as your source for connecting with students. Please choose one of the options below:</h3>
 
         <!-- Button 1: Create Listing -->
