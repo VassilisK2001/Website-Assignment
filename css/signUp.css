@@ -1,171 +1,170 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #3C5BFF;
- }
-
- .message {
-  background-color: #FFB833;
-  color: #000;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 2px 30px;
-  width: 905px;
-  margin-left: 500px;
-  margin-bottom: 20px;
-  margin-top: 4px;
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
-  text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  animation: shake 0.5s;
+  background-color: #3C5BFF;
+}
+
+.message {
+background-color: #FFB833;
+color: #000;
+border: 1px solid #ccc;
+border-radius: 8px;
+padding: 2px 30px;
+width: 905px;
+margin-left: 500px;
+margin-bottom: 20px;
+margin-top: 4px;
+font-family: Arial, sans-serif;
+text-align: center;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+animation: shake 0.5s;
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
+0% { transform: translateX(0); }
+25% { transform: translateX(-5px); }
+50% { transform: translateX(5px); }
+75% { transform: translateX(-5px); }
+100% { transform: translateX(0); }
 }
- 
- .inner-container {
-     width: 967px;
-     height: 800px;
-     margin-bottom: 80px;
-     flex-shrink: 0;
-     border-radius: 40px 40px 40px 40px;
-     background: #FFF;
-     margin-left: 500px;
- }
 
- h1 {
-     width: 301px;
-     height: 39px;
-     flex-shrink: 0;
-     color: #4D4242;
-     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-     font-size: 32px;
-     font-style: normal;
-     font-weight: 700;
-     line-height: normal;
-     margin-bottom: 60px;
-     margin-left: 30px;
- }
+.inner-container {
+   width: 967px;
+   height: 800px;
+   margin-bottom: 80px;
+   flex-shrink: 0;
+   border-radius: 40px 40px 40px 40px;
+   background: #FFF;
+   margin-left: 500px;
+}
 
- .name-group {
-     display: flex;
-     justify-content: space-between;
- }
+h1 {
+   width: 301px;
+   height: 39px;
+   flex-shrink: 0;
+   color: #4D4242;
+   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   font-size: 32px;
+   font-style: normal;
+   font-weight: 700;
+   line-height: normal;
+   margin-bottom: 60px;
+   margin-left: 30px;
+}
 
- .form-group {
-     width: 48%;
-     margin-bottom: 30px;
+.name-group {
+   display: flex;
+   justify-content: space-between;
+}
+
+.form-group {
+   width: 48%;
+   margin-bottom: 30px;
 }
 
 .age {
-     margin-left: 60px;
+   margin-left: 60px;
 }
 
 .region{
-     margin-left: 30px;
+   margin-left: 30px;
 }
 
- label {
-   color: #795A5A;
-   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-   font-size: 17px;
-   font-style: normal;
-   font-weight: 500;
-   line-height: normal;
-   letter-spacing: 1px;
-   margin-left: 30px;
- }
+label {
+ color: #795A5A;
+ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ font-size: 17px;
+ font-style: normal;
+ font-weight: 500;
+ line-height: normal;
+ letter-spacing: 1px;
+ margin-left: 30px;
+}
 
- .name-input{
-   display: inline-flex;
-   padding: 0px 20px 14px 27px;
-   justify-content: flex-end;
-   align-items: center;
-   border-radius: 8px;
-   border: 1px solid #795A5A;
-   background: #FFF;
- }
+.name-input{
+ display: inline-flex;
+ padding: 0px 20px 14px 27px;
+ justify-content: flex-end;
+ align-items: center;
+ border-radius: 8px;
+ border: 1px solid #795A5A;
+ background: #FFF;
+}
 
 
- input[type="text"],
- input[type="email"],
- input[type="password"] {
-   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-   font-size: 17px;
-   color:#795A5A; 
-   border: 2px solid;
-   padding: 12px;
-   background: #FFF;
-   border-radius: 8px;
- }
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+ font-size: 17px;
+ color:#795A5A; 
+ border: 2px solid;
+ padding: 12px;
+ background: #FFF;
+ border-radius: 8px;
+}
+
+
+select {
+ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+ font-size: 17px;
+ color:#795A5A; 
+ border: 2px solid;
+ padding: 12px;
+ background: #FFF;
+ border-radius: 8px;
+ width: 250px;
+}
+
+input[type='text']::placeholder,
+input[type='email']::placeholder,
+input[type='password']::placeholder {
+ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+ font-size: 17px;
+ color:#795A5A;
+
+}
+
+.cred-input{
+ display: flex;
+ width: 824px;
+ padding: 0px 299px 18px 62px;
+ margin-left: 30px;
+ align-items: center;
+ border-radius: 8px;
+ border: 1px solid #795A5A;
+ background: #FFF;
  
+}
 
- select {
-   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-   font-size: 17px;
-   color:#795A5A; 
-   border: 2px solid;
-   padding: 12px;
-   background: #FFF;
-   border-radius: 8px;
-   width: 250px;
- }
+.radio-group {
+ margin-top: 10px; /* Adjust the value to increase or decrease the vertical distance */
+}
 
- input[type='text']::placeholder,
- input[type='email']::placeholder,
- input[type='password']::placeholder {
-   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-   font-size: 17px;
-   color:#795A5A;
-
- }
-
- .cred-input{
-   display: flex;
-   width: 824px;
-   padding: 0px 299px 18px 62px;
-   margin-left: 30px;
-   align-items: center;
-   border-radius: 8px;
-   border: 1px solid #795A5A;
-   background: #FFF;
-   
- }
-
- .radio-group {
-   margin-top: 10px; /* Adjust the value to increase or decrease the vertical distance */
- }
-
- .checkbox-group input[type="checkbox"] {
-     border: 10px solid #d5d5d5;
-     border-radius: 5px;
-     cursor: pointer;
-     margin-right: 10px;
-     width: 20px;
-     height: 20px;  
- }
-
- 
- .create-account-btn {
-   display: flex;
-   width: 500px;
-   padding: 16px 40px;
-   font-size: 17px;
-   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-   font-style: normal;
-   justify-content: center;
-   align-items: center;
-   border-radius: 8px;
-   margin-bottom: 40px;
-   margin-left: 30px;
-   background-color: #3C5BFF;
+.checkbox-group input[type="checkbox"] {
+   border: 10px solid #d5d5d5;
+   border-radius: 5px;
    cursor: pointer;
- }
+   margin-right: 10px;
+   width: 20px;
+   height: 20px;  
+}
 
- 
+
+.create-account-btn {
+ display: flex;
+ width: 500px;
+ padding: 16px 40px;
+ font-size: 17px;
+ font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+ font-style: normal;
+ justify-content: center;
+ align-items: center;
+ border-radius: 8px;
+ margin-bottom: 40px;
+ margin-left: 30px;
+ background-color: #3C5BFF;
+ cursor: pointer;
+}
+

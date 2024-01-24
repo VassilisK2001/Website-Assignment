@@ -24,7 +24,7 @@ if (role == null || role.isEmpty()) {
 
 <jsp:forward page="login.jsp"/>
 
-<%} else {
+<% } else {
     // Perform authentication based on the role
     if(role.equals("student")) {
         try{

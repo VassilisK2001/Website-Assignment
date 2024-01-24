@@ -283,24 +283,24 @@ if(countErrors != 0){
             <ol>
 <% if(index.contains(1)){ %>
                 <li>Enter your <b>First Name</b> correctly</li>
-<%} if(index.contains(2)){ %>
+<% } if(index.contains(2)){ %>
                 <li>Enter your <b>Last Name</b> correctly</li>
-<%} if(index.contains(3)){ %>
+<% } if(index.contains(3)){ %>
                 <li><b>Age</b> <%=message_age%></li>
-<%} if(index.contains(4)){ %>
+<% } if(index.contains(4)){ %>
                 <li>Enter your <b>Region</b> correctly</li>                
-<%} if(index.contains(5)){ %>
+<% } if(index.contains(5)){ %>
                 <li>Enter your <b>Email</b> correctly</li>
-<%} if(index.contains(6)){ %>
+<% } if(index.contains(6)){ %>
                 <li><b>Experience</b> is not valid</li>
-<%} if(index.contains(7)){ %>
+<% } if(index.contains(7)){ %>
                 <li><b>Education</b> must be between 3 and 50 words</li>
-<%} if(index.contains(8)){ %>
+<% } if(index.contains(8)){ %>
                 <li><b>Certifications</b> must be between 2 and 50 words</li>
-<%} if(index.contains(9)){ %>
+<% } if(index.contains(9)){ %>
                 <li><b>Price per hour</b> is not valid</li>
             </ol>
-<%} %>
+<% } %>
         </div>
     </div>
 </div>
