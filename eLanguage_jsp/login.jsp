@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="<%=request.getContextPath()%>/js/password_script.js"></script>
 
     <title>SignIn Page</title>
 </head>
@@ -44,7 +46,10 @@
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" placeholder="Enter your password" name="password" class="cred-input" required>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Enter your password" name="password" class="cred-input" required>
+                    <span id="togglePassword" class="password-toggle"><i class="fa fa-eye password-icon"></i></span>
+                </div>
             </div>
             <div class="form-group">
                 <label for="role">Role:</label>

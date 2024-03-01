@@ -129,7 +129,7 @@ if(role == null || role.isEmpty()){
 int sessionTimeoutSeconds = 15 * 60;
 session.setMaxInactiveInterval(sessionTimeoutSeconds);
 
-if(countErrors != 0){
+if(countErrors != 0) {
 %>
 
 <div class="message" style="background-color: #FFB833;">
@@ -143,22 +143,22 @@ if(countErrors != 0){
             <ol>
 <% if(index.contains(1)){ %>
                 <li><b>First Name</b> must be at least 3 characters long</li>
-<%} if(index.contains(2)){ %>
+<% } if(index.contains(2)){ %>
                 <li><b>Last Name</b> must be at least 3 characters long</li>
-<%} if(index.contains(3)){ %>
+<% } if(index.contains(3)){ %>
                 <li><b>Age</b> <%=age_error_msg %></li>                
-<%} if(index.contains(4)){ %>
+<% } if(index.contains(4)){ %>
                 <li><b>Email</b> is not valid</li>
-<%} if(index.contains(5)){ %>
+<% } if(index.contains(5)){ %>
                 <li><b>Username</b> must be at least 5 characters long</li>
-<%} if(index.contains(6)){ %>
+<% } if(index.contains(6)){ %>
                 <li><b>Password</b> must be at least 6 characters long</li>
-<%} if(index.contains(7)){ %>
+<% } if(index.contains(7)){ %>
                 <li><b>Password</b> and <b>Confirm</b> do not match</li>
-<%} if(index.contains(8)){ %>
+<% } if(index.contains(8)){ %>
                 <li><b>Role</b> must be either a student or a teacher</li>
             </ol>
-<%} %>
+<% } %>
         </div>
     </div>
 </div>
