@@ -7,8 +7,15 @@ document.addEventListener("DOMContentLoaded", function() {
             const type = passwordField.getAttribute("type") === "password" ? "text" : "password";
             passwordField.setAttribute("type", type);
             
-            // Change icon based on password visibility
-            this.querySelector("i").classList.toggle("fa-eye-slash");
+            // Toggle eye and eye-slash icons
+            const iconElement = this.querySelector("i");
+            if (type === "password") {
+                iconElement.classList.remove("fa-eye-slash");
+                iconElement.classList.add("fa-eye");
+            } else {
+                iconElement.classList.remove("fa-eye");
+                iconElement.classList.add("fa-eye-slash");
+            }
         });
     });
 });
