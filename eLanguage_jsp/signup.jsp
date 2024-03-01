@@ -19,6 +19,8 @@ List<String> regions = dbdao.getRegions();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/signUp.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <script src="<%=request.getContextPath()%>/js/password_script.js"></script>
 
     <title>Signup Page</title>
 </head>
@@ -92,11 +94,17 @@ List<String> regions = dbdao.getRegions();
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" placeholder="Enter your password" name="password" class="cred-input" required>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Enter your password" name="password" class="cred-input" required>
+                        <span id="togglePassword" class="password-toggle"><i class="fa fa-eye password-icon"></i></span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="confirm">Confirm:</label>
-                    <input type="password" id="confirm" placeholder="Confirm your password" name="confirm" class="cred-input" required>
+                    <div class="password-container">
+                        <input type="password" id="confirm" placeholder="Confirm your password" name="confirm" class="cred-input" required>
+                        <span id="toggleConfirmPassword" class="password-toggle"><i class="fa fa-eye password-icon"></i></span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="role">Role:</label>

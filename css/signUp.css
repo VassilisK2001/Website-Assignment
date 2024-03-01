@@ -104,6 +104,19 @@ body {
   background: #FFF;
   border-radius: 8px;
  }
+
+ .password-container {
+   position: relative;
+   display: inline-block;
+ }
+ 
+  .password-icon {
+   position: absolute;
+   right: 10px; /* Adjust this value as needed */
+   top: 50%;
+   transform: translateY(-50%);
+   cursor: pointer;
+ }
  
  
  select {
